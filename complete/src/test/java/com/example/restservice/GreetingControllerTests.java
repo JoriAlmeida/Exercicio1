@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+
 package com.example.restservice;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -34,13 +36,25 @@ public class GreetingControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+
+	/*
+	Esta linha de código realiza uma solicitação GET para o endpoint /greeting, imprime os detalhes da 
+	solicitação e da resposta, e verifica se a resposta tem um status 200 (OK) e se o conteúdo da resposta 
+	contém um campo content com o valor "Hello, World!". Se todas essas condições forem verdadeiras, 
+	teste passa; caso contrário, ele falhará.
+	*/
 	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
-
 		this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
 
+	/*
+	esta linha de código realiza uma solicitação GET para o endpoint /greeting com um parâmetro name, 
+	imprime os detalhes da solicitação e da resposta, e verifica se a resposta tem um status 200 (OK) 
+	e se o conteúdo da resposta contém um campo content com o valor "Hello, Spring Community!". Se todas 
+	essas condições forem verdadeiras, o teste passa; caso contrário, ele falhará.
+	*/
 	@Test
 	public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
